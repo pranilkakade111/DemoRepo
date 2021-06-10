@@ -11,6 +11,7 @@
  ************************************************************************* */
 const userModel = require('../models/user');
 const bcrypt = require('bcrypt');
+const { nodeMail } = require('../../utility/helper');
 
 class UserService {
     /**
@@ -62,6 +63,40 @@ class UserService {
       }
     });
   };
+
+  /**
+  * @description validate credentials and return result accordingly to database using model methods
+  * @param {*} forgotPass holds the data
+  * @param {*} callback callback funcntion
+  */
+
+  forgotPassword = (forgotPass, callback) => {
+    userModel.forgotPassword(forgotPass, (err, result) => {
+      const detailData = {
+        email: result.email,
+        _id: result._id,
+        role: result.role,
+      };
+      if(result) {
+        if(err) {
+          callback(err, null);
+        } else {
+          callback(null, nodeMail(detailData));
+        }
+      } else {
+        callback('Email Does Not Exist..!');
+      }
+    });
+  };
+
+  /**
+  * @description Call The Reset Function of model
+  * @param {*} data 
+  * @param {*}  callback callback funcntion
+  */
+   resetPassword = (data ,callback) => {
+    userModel.resetPassword(data ,callback);
+};
 };
 
 module.exports = new UserService();
