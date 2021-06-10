@@ -10,6 +10,7 @@
  *
  ************************************************************************* */
 const joi = require('@hapi/joi');
+const helper = require('../../utility/helper');
 const userService = require('../services/user');
 
 const requestValidationSchema = joi.object({
@@ -56,6 +57,40 @@ class UserController {
                message: 'Data Inserted Successfully..!',
                data: userResult,
            });
+    });
+  };
+
+   /**
+   * @description Login With User/Admin Credential
+   * @param {*} request in json formate
+   * @param {*} response sends response from server
+   */
+  login = (req, res) => {
+    const loginData = {
+      email: req.body.email,
+      password: req.body.password,
+      role: req.role,
+    };
+    userService.login(loginData, (err, loginResult) => {
+      if(err) {
+         return res.status(401).send({
+          success: false,
+          message: 'Login Failed...!',
+          error: err,
+         })
+        } else if ( req.role !== 'user'){
+          return res.status(200).send({
+            success: true,
+            message: 'Login Admin Successfully..!',
+            Token: helper.createToken(loginResult),
+        }); 
+        } else {
+         return res.status(200).send({
+             success: true,
+             message: 'Login User Successfully..!',
+             Token: helper.createToken(loginResult),
+         });
+        }
     });
   };
 };
