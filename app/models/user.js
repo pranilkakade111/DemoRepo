@@ -6,7 +6,7 @@
  * @file            : user.js
  * @author          : Pranil Kakade
  * @version         : 1.0
- * @since           : 02-05-2021
+ * @since           : 06-05-2021
  *
  ************************************************************************* */
 const mongoose = require('mongoose');
@@ -57,6 +57,27 @@ class UserModel {
             role: userDetails.role,
         });
         user.save(callback);      
+    };
+
+    login = (userLogin, callback) => {
+      User.findOne({ email: userLogin.email })
+      .then((user) => {
+          callback(null, user);
+      }).catch((err) => {
+        callback(err, null);
+      });
+    };
+
+    checkRole = (userRole, callback) => {
+      User.findOne({ email: userRole.email }, (err, roleCheck) => {
+        // console.log(roleCheck.role);
+        if(userRole.role === roleCheck.role ){
+          callback(err, null);
+        } else{
+          callback(null, roleCheck);
+        }
+        // console.log(userRole.role);
+      });
     };
 };
 
