@@ -12,11 +12,11 @@ const user = require('../controllers/user');
 const helper = require('../../utility/helper');
 
 module.exports = (app) => {
-  app.post('/user', helper.verifyRole('user'), user.userRegister);
+  app.post('/user', helper.setUserRole('user'), user.userRegister);
 
-  app.post('/admin', helper.verifyRole('admin'), user.userRegister);
+  app.post('/admin', helper.setUserRole('admin'), user.userRegister);
 
-  app.post('/userLogin', helper.verifyRole('user'), user.login);
+  app.post('/userLogin', helper.setUserType('user'), user.login);
 
-  app.post('/adminLogin', helper.verifyRole('admin'), user.login);
+  app.post('/adminLogin', helper.setUserType('admin'), user.login);
 };
