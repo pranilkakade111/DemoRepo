@@ -72,25 +72,68 @@ class UserController {
       userType: req.role,
     };
     userService.login(loginData, (err, loginResult) => {
-      if(err) {
-         return res.status(401).send({
+      err 
+        ? res.status(401).send({
           success: false,
           message: 'Login Failed...!',
           error: err,
          })
-        } else if ( req.role !== 'user'){
-          return res.status(200).send({
+        : (
+          req.role !== 'user'
+          ? res.status(200).send({
             success: true,
             message: 'Login Admin Successfully..!',
             Token: helper.createToken(loginResult),
-        }); 
-        } else {
-         return res.status(200).send({
+        }) 
+         : res.status(200).send({
              success: true,
              message: 'Login User Successfully..!',
              Token: helper.createToken(loginResult),
-         });
-        }
+         })
+        )
+    });
+  };
+
+  /**
+   * @description Send Reset Password Link To EmailID
+   * @param {*} req in json formate
+   * @param {*} res sends response from server
+   */
+  forgotPassword = (req, res) => {
+    const forgotPass = {
+      email: req.body.email,
+    };
+    userService.forgotPassword(forgotPass, (err, result) => {
+      err 
+        ? res.status(401).send({
+          success: false,
+          message: 'Failed To Send An Email...!',
+          err,
+        })
+        : res.status(200).send({
+          success: true,
+          message: 'Reset Link Sent On Register Email Id...Successully...!!!',
+          data: result,
+        });
+    });
+  };
+
+  resetPassword = (req, res) => {
+    const userInfo = {
+      newPassword: req.body.newPassword,
+      email: req.userData.email,
+    };
+    userService.resetPassword(userInfo, (err, result) => {
+      err
+        ? res.status(401).send({
+              success: false,
+              message: 'Failed To Reset Password',
+              err,
+          })
+        : res.status(200).send({
+              success: true,
+              message: 'Reset Password Successfully....!!! ',       
+          })
     });
   };
 };
