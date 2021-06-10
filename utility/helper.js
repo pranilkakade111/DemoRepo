@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 class Helper {
- verifyRole = (permission) => (req, res, next) => {
+ setUserRole = (permission) => (req, res, next) => {
   req.role = permission;
   if(permission.includes(req.role))
   {
@@ -13,7 +13,19 @@ class Helper {
       message: 'You Dont Have Permission..!'
     });
   }
+ };
 
+ setUserType = (userRole) => (req, res, next) => {
+  req.role = userRole;
+  if(userRole.includes(req.role))
+  {
+    next();
+  } else {
+    return res.status(401).send({
+      success: false,
+      message: 'You Dont Have Permission..!'
+    });
+  }
  };
 
  createToken = (data) => {
@@ -24,6 +36,8 @@ class Helper {
   }, process.env.JWT, { expiresIn: '24d'});
   return token;
  };
+
+ 
 
 };
 module.exports = new Helper();
