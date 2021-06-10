@@ -37,8 +37,6 @@ class UserService {
         } 
         callback(err, null);
       } else if (roleExist){
-        // console.log(roleExist.role);
-        // console.log(userLogin.role);
         let userRole = ''
            userRole = {
             success: false,
