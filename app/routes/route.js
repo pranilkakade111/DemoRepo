@@ -19,4 +19,8 @@ module.exports = (app) => {
   app.post('/userLogin', helper.setUserType('user'), user.login);
 
   app.post('/adminLogin', helper.setUserType('admin'), user.login);
+
+  app.post('/forgotPassword', user.forgotPassword);
+
+  app.post('/resetPassword', helper.verifyToken, user.resetPassword);
 };
