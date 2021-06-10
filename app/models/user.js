@@ -70,13 +70,11 @@ class UserModel {
 
     checkRole = (userRole, callback) => {
       User.findOne({ email: userRole.email }, (err, roleCheck) => {
-        // console.log(roleCheck.role);
-        if(userRole.role === roleCheck.role ){
+        if(userRole.userType === roleCheck.role ){
           callback(err, null);
         } else{
           callback(null, roleCheck);
         }
-        // console.log(userRole.role);
       });
     };
 };
