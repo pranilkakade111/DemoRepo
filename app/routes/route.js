@@ -15,4 +15,8 @@ module.exports = (app) => {
   app.post('/user', helper.verifyRole('user'), user.userRegister);
 
   app.post('/admin', helper.verifyRole('admin'), user.userRegister);
+
+  app.post('/userLogin', helper.verifyRole('user'), user.login);
+
+  app.post('/adminLogin', helper.verifyRole('admin'), user.login);
 };
