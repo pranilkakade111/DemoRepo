@@ -77,6 +77,32 @@ class UserModel {
         }
       });
     };
+
+    /**
+      * @description send Reset Link to email Id Of User 
+      * @param {*} data holds email Id
+      * @param {*} callback holds a function 
+     */
+     forgotPassword = (data, callback) => {
+      User.findOne({ email: data.email })
+          .then((user) => {
+              callback(null, user);
+          });
+  };
+
+  /**
+      * @description find Email Id In the database and callback with user data or error 
+      * @param {*} data hold email id
+      * @param {*} callback holds a function 
+     */
+   resetPassword = async (data, callback) => {
+    const salt = await bcrypt.genSalt(10)
+    const encrypt = await bcrypt.hash(data.newPassword, salt)
+    User.findOneAndUpdate({ email: data.email }, { password: encrypt }, { new: true })
+        .then((cred) => {
+            callback(null, cred);
+        });
+  };
 };
 
 module.exports = new UserModel();
