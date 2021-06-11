@@ -268,10 +268,7 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "token": {
-                                    "type": "string"
-                                },
-                                "password": {
+                                "newPassword": {
                                     "type": "string"
                                 }
                             }
@@ -285,8 +282,20 @@
                     "400": {
                         "description": "Password Is Not Reset"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ]
             }
+        }
+    },
+    "securityDefinitions": {
+        "JWT": {
+            "type": "apiKey",
+            "name": "token",
+            "in": "header"
         }
     }
 }
