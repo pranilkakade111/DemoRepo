@@ -1,0 +1,292 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "The Book-Store App",
+        "version": "1.0.0",
+        "title": "Book-Store-App"
+    },
+    "host": "localhost:8000",
+    "tags": [
+        {
+            "name": "Book-Store-App",
+            "description": "The Book Store App"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes":[
+        "application/json"
+    ],
+    "produces":[
+        "application/json"
+    ],
+    "paths": {
+        "/user":{
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register As a End User",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "User",
+                        "description": "User Object That Need to be Register",
+                        "required": true,
+                        "schema": {
+                            "type":"object",
+                            "properties": {
+                                "firstName":{
+                                    "type":"string"
+                                },
+                                "lastName":{
+                                    "type":"string"
+                                },
+                                "email":{
+                                    "type":"string"
+                                },
+                                "password":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description": "User Register Successfully..!"
+                    },
+                    "400":{
+                        "description": "Failed To Register User..!"
+                    },
+                    "500":{
+                        "description": "Internal Server Error..!"
+                    }
+                }
+            }
+        },
+        "/admin":{
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register As Admin..!",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "User",
+                        "required": true,
+                        "schema": {
+                            "type":"object",
+                            "properties": {
+                                "firstName":{
+                                    "type":"string"
+                                },
+                                "lastName":{
+                                    "type":"string"
+                                },
+                                "email":{
+                                    "type":"string"
+                                },
+                                "password":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description": "Admin register Successully"
+                    },
+                    "400":{
+                        "description": "Failed To Register Admin"
+                    },
+                    "500":{
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/userLogin":{
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login Registered User",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "User",
+                        "description": "User Credential that Need For Login",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description": "User Login successfully..!"
+                    },
+                    "400":{
+                        "description": "Login Failed..!"
+                    },
+                    "500":{
+                        "description": "Internal Server Error"
+                    }
+                }
+                
+            }
+        },
+        "/adminLogin":{
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login User Registered As a Admin",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "User",
+                        "description": "Admin Object That Teed To Be Login",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description": "Admin Login Successfully..!"
+                    },
+                    "400":{
+                        "description": "Failed to Login"
+                    },
+                    "500":{
+                        "description": "Internal Server error"
+                    }
+                }
+            }
+        },"/forgotPassword": {
+            "post": {
+                "tags": [
+                    "Forgot Password"
+                ],
+                "description": "create a forgot password endpoint",
+                "summary": "forgot password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Forgot Password",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Email sent successfully"
+                    },
+                    "400": {
+                        "description": "Email Not Sent "
+                    }
+                }
+            }
+        },
+        "/resetPassword": {
+            "post": {
+                "tags": [
+                    "Reset Password"
+                ],
+                "description": "create a reset Password endpoint",
+                "summary": "Reset Password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": " Reset Password ",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "token": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Password reset Successfully"
+                    },
+                    "400": {
+                        "description": "Password Is Not Reset"
+                    }
+                }
+            }
+        }
+    }
+}
