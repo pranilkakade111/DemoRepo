@@ -9,6 +9,7 @@
  * @since           : 06-05-2021
  ************************************************************************* */
 const user = require('../controllers/user');
+const book = require('../controllers/book');
 const helper = require('../../utility/helper');
 
 module.exports = (app) => {
@@ -23,4 +24,12 @@ module.exports = (app) => {
   app.post('/forgotPassword', user.forgotPassword);
 
   app.post('/resetPassword', helper.verifyToken, user.resetPassword);
+
+  app.post('/books', helper.verifyRole, book.createBook);
+
+  app.get('/books', helper.verifyToken, book.getAllBooks);
+
+  app.put('/books/:bookId', helper.verifyRole, book.updateBook);
+
+  app.delete('/books/:bookId', helper.verifyRole, book.deleteBook);
 };

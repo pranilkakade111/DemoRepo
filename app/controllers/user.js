@@ -132,7 +132,8 @@ class UserController {
           })
         : res.status(200).send({
               success: true,
-              message: 'Reset Password Successfully....!!! ',       
+              message: 'Reset Password Successfully....!!! ',
+              data: result     
           })
     });
   };

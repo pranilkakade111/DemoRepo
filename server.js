@@ -1,5 +1,7 @@
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
 const logger = require('./Logger/logger');
+const swaggerDoc = require('./swagger.json');
 const dbConnection = require('./config/dbConfig');
 
 require('dotenv').config();
@@ -9,6 +11,8 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 app.get('/', (req, res) => {
   res.send('Welcome To Book-Store App...!');
@@ -28,3 +32,5 @@ new dbConnection(process.env.MONGODB, {
 }).connect()
   .then((uri) => console.log(`Connected To ${uri} Successfully...!`))
   .catch((err) => console.log('could Not Connected To Database..!', err));
+
+module.exports = app;

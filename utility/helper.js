@@ -75,8 +75,6 @@ verifyToken = (req, res, next) => {
     req.userData = decode;
     const userId = decode.id;
     req.userId = userId;
-    const userRole = decode.role;
-    req.userRole = userRole;
     next();
   } catch (error) {
     res.status(401).send({
@@ -87,14 +85,13 @@ verifyToken = (req, res, next) => {
 verifyRole = (req, res, next) => {
   try {
     const decode = jwt.verify(req.headers.token, process.env.JWT);
-    const userRole = decode.role;
-    req.userRole = userRole;
     if(decode.role !== 'admin') {
       res.status(501).send({
         success: false,
-        message: 'Authorization Failed..!'
+        message: 'Authorization Failed...!'
       });
     }
+    req.userData = decode;
     next();
   } catch (error) {
     res.status(401).send({
