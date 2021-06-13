@@ -1,3 +1,13 @@
+/** ***********************************************************************
+ * Execution        : 1. default node       cmd> nodemon server.js
+ *
+ * Purpose          : To hit the perticular API 
+
+ * @file            : book.js
+ * @author          : Pranil Kakade
+ * @version         : 1.0
+ * @since           : 09-06-2021
+ ************************************************************************* */
 const mongoose = require('mongoose');
 
 const BookSchema = new mongoose.Schema({
@@ -16,6 +26,10 @@ const Book = mongoose.model('Book', BookSchema);
 
 class BookModel {
   
+  /**
+   * @description save request Book data to database
+   * @param {*} bookDetail holds data to be saved in json formate
+   */
   createBook = async (bookDetail) => {
     const book = new Book({
         author: bookDetail.author, 
@@ -29,11 +43,18 @@ class BookModel {
     return booksData;
   };
 
+  /**
+   * @description retrive all Book from database
+   */
   getAllBooks = async () => {
     const books = await Book.find();
     return books;
   };
 
+   /**
+   * @description update Book data existed in database
+   * @param {*} bookUpdate holds _id that is bookId
+   */
   updateBook = async (bookUpdate) => {
     const updateBookData = await Book.findByIdAndUpdate(bookUpdate.bookId, { 
         author: bookUpdate.author, 
@@ -46,6 +67,10 @@ class BookModel {
     return updateBookData;
   };
 
+   /**
+   * @description remove Book from database
+   * @param {*} data holds _id that is bookId
+   */
   deleteBook = async (data) => {
     const dataId = await Book.findByIdAndRemove(data);
     return dataId; 

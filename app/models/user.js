@@ -6,8 +6,7 @@
  * @file            : user.js
  * @author          : Pranil Kakade
  * @version         : 1.0
- * @since           : 06-05-2021
- *
+ * @since           : 06-06-2021
  ************************************************************************* */
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -90,11 +89,11 @@ class UserModel {
           });
   };
 
-  /**
+      /**
       * @description find Email Id In the database and callback with user data or error 
       * @param {*} data hold email id
       * @param {*} callback holds a function 
-     */
+      */
    resetPassword = async (data, callback) => {
     const salt = await bcrypt.genSalt(10)
     const encrypt = await bcrypt.hash(data.newPassword, salt)

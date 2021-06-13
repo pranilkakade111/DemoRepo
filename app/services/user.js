@@ -6,8 +6,7 @@
  * @file            : user.js
  * @author          : Pranil Kakade
  * @version         : 1.0
- * @since           : 06-05-2021
- *
+ * @since           : 06-06-2021
  ************************************************************************* */
 const userModel = require('../models/user');
 const bcrypt = require('bcrypt');

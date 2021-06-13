@@ -6,8 +6,7 @@
  * @file            : user.js
  * @author          : Pranil Kakade
  * @version         : 1.0
- * @since           : 06-05-2021
- *
+ * @since           : 06-06-2021
  ************************************************************************* */
 const joi = require('@hapi/joi');
 const helper = require('../../utility/helper');
@@ -118,6 +117,11 @@ class UserController {
     });
   };
 
+   /**
+   * @description Reset Password 
+   * @param {*} req in json formate
+   * @param {*} res sends response from server
+   */
   resetPassword = (req, res) => {
     const userInfo = {
       newPassword: req.body.newPassword,

@@ -1,14 +1,37 @@
+/** ***********************************************************************
+ * Execution        : 1. default node       cmd> nodemon server.js
+ *
+ * Purpose          : To hit the perticular API 
+
+ * @file            : book.js
+ * @author          : Pranil Kakade
+ * @version         : 1.0
+ * @since           : 09-06-2021
+ ************************************************************************* */
 const bookService = require('../services/book');
+const joi = require('@hapi/joi');
+
+const validateBookSchema = joi.object({
+    author: joi.string().required(), 
+    title: joi.string().required(),
+    image: joi.string().required(),
+    quantity: joi.string().required(),
+    price: joi.string().required(),
+    description: joi.string().required(), 
+});
 
 class BookController {
 
+   /**
+   * @description Create A Book 
+   * @param {*} req in json formate
+   * @param {*} resp sends response from server
+   */  
   createBook = async (req, res) => {
       try {
-        if(!req.body.author || !req.body.title || !req.body.image || !req.body.quantity || !req.body.price || !req.body.description) {
-            return res.status(401).send({
-               success: false,
-               message: 'Fields Can Not Be Empty..!'
-            });
+          const result = await validateBookSchema.validate(req.data);
+          if(result.error){
+            return res.send('Fields Can Not Be Empty');
           }
         const bookInfo = {
             author: req.body.author, 
@@ -40,6 +63,11 @@ class BookController {
       }
     };
       
+   /**
+   * @description Retrive All The Books
+   * @param {*} req in json formate
+   * @param {*} resp sends response from server
+   */
     getAllBooks = async (req, res) => {
         try {
             const bookData = await bookService.getAllBooks();
@@ -65,6 +93,11 @@ class BookController {
       
     };
 
+   /**
+   * @description Update A Existing book With BookId 
+   * @param {*} req in json formate
+   * @param {*} res sends response from server
+   */
     updateBook = async (req, res) => {
         try {
             if(!req.body.author || !req.body.title || !req.body.image || !req.body.quantity || !req.body.price || !req.body.description) {
@@ -105,6 +138,11 @@ class BookController {
         }      
     };
 
+   /**
+   * @description Delete A Book From Database
+   * @param {*} req in json formate
+   * @param {*} res sends response from server
+   */
     deleteBook = async (req, res) => {
         try {
             const idData = req.params.bookId;
