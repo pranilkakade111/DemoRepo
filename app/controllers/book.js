@@ -42,18 +42,17 @@ class BookController {
             description: req.body.description,
         };
           const bookData = await bookService.createBook(bookInfo);
-          if(bookData !== null) {
-            return res.status(200).send({
+          bookData !== null
+               ? res.status(200).send({
                 success: true,
                 message: 'Book Added Successfully...!',
                 bookData,
-            });
-          } else {
-              return res.status(400).send({
+            })    
+            : res.status(400).send({
                  success: false,
                  message: 'Failed To Add Book..!'
               });
-          } 
+           
       } catch (error) {
         return res.status(400).send({
             success: false,
@@ -71,18 +70,19 @@ class BookController {
     getAllBooks = async (req, res) => {
         try {
             const bookData = await bookService.getAllBooks();
-            if (bookData !== null) {
-              return res.status(200).send({
+            bookData !== null
+                 ?
+                  res.status(200).send({
                   success: true,
                   message: 'Retrive All Books Successfully...!',
                   data: bookData,
-              });
-            } else {
-              return res.status(401).send({
+              })
+                :
+                  res.status(401).send({
                   success: false,
                   message: 'Failed To Retrive All Books...!'
               });
-            }  
+              
         } catch (error) {
             return res.status(400).send({
                 success: false,
@@ -116,18 +116,17 @@ class BookController {
                 bookId: req.params.bookId,
             }; 
             const updateData = await bookService.updateBook(bookInfo);
-            if (updateData !== null) {
-                return res.status(200).send({
+            updateData !== null
+                   ? res.status(200).send({
                     success: true,
                     message: 'Update Book Successfully...!',
                     data: updateData,
-                });
-              } else {
-                return res.status(401).send({
+                })
+                :
+                     res.status(401).send({
                     success: false,
                     message: 'Failed To Update Books...!'
-                });
-              }  
+                })
 
         } catch (error) {
             return res.status(400).send({
@@ -147,17 +146,18 @@ class BookController {
         try {
             const idData = req.params.bookId;
             const dataDelete = await bookService.deleteBook(idData);
-            if(dataDelete !== null) {
-              return res.status(200).send({
+            dataDelete !== null
+              ?
+                  res.status(200).send({
                   success: true,
                   message: 'Delete Book Successfully...!',
-              });
-            } else {
-              return res.status(401).send({
+              })
+              
+               :
+                  res.status(401).send({
                   success: false,
                   message: 'Failed To Delete Book...!'
               });
-            }  
         } catch (error) {
             return res.status(400).send({
                 success: false,

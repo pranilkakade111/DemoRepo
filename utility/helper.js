@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const ejs = require('ejs');
 const nodemailer = require('nodemailer');
-const logger = require('../Logger/logger');
+const logger = require('../logger/logger');
 require('dotenv').config();
 
 class Helper {
@@ -82,6 +82,7 @@ verifyToken = (req, res, next) => {
     });
   }
 };
+
 verifyRole = (req, res, next) => {
   try {
     const decode = jwt.verify(req.headers.token, process.env.JWT);

@@ -1,0 +1,71 @@
+{
+    "books": {
+        "createBook": {
+            "author": "Stephen King",
+            "title": "Carrie",
+            "image": "http://books.google.com/books/content?id=KOPSjMuVN4kC&printsec=frontcover&img=1&zoom=5",
+            "quantity": "14",
+            "price": "444",
+            "description": "Stephen Kings legendary debutabout a teenage outcast and the revenge she enacts on her classmatesis a Classic. CARRIE is the novel which set him on the road to the Number One bestselling author King is today. Carrie White is no ordinary girl. Carrie White has the gift of telekinesis. To be invited to Prom Night by Tommy Ross is a dream come true for Carrie - the first step towards social acceptance by her high school colleagues. But events will take a decidedly macabre turn on that horrifying and endless night as she is forced to exercise her terrible gift on the town that mocks and loathes her . ."
+        },
+        "createBookWithNoAuthor": {
+            "author": "", 
+            "title": "Carrie",
+            "image": "http://books.google.com/books/content?id=KOPSjMuVN4kC&printsec=frontcover&img=1&zoom=5",
+            "quantity": "14",
+            "price": "444",
+            "description": "Stephen Kings legendary debutabout a teenage outcast and the revenge she enacts on her classmatesis a Classic. CARRIE is the novel which set him on the road to the Number One bestselling author King is today. Carrie White is no ordinary girl. Carrie White has the gift of telekinesis. To be invited to Prom Night by Tommy Ross is a dream come true for Carrie - the first step towards social acceptance by her high school colleagues. But events will take a decidedly macabre turn on that horrifying and endless night as she is forced to exercise her terrible gift on the town that mocks and loathes her . ."
+        },
+        "createBookWithNoTitle":{
+            "author": "Stephen King", 
+            "title": "",
+            "image": "http://books.google.com/books/content?id=KOPSjMuVN4kC&printsec=frontcover&img=1&zoom=5",
+            "quantity": "14",
+            "price": "444",
+            "description": "Stephen Kings legendary debutabout a teenage outcast and the revenge she enacts on her classmatesis a Classic. CARRIE is the novel which set him on the road to the Number One bestselling author King is today. Carrie White is no ordinary girl. Carrie White has the gift of telekinesis. To be invited to Prom Night by Tommy Ross is a dream come true for Carrie - the first step towards social acceptance by her high school colleagues. But events will take a decidedly macabre turn on that horrifying and endless night as she is forced to exercise her terrible gift on the town that mocks and loathes her . ."
+        },
+        "createBookWithNoImage": {
+            "author": "Stephen King", 
+            "title": "Carrie",
+            "image": "",
+            "quantity": "14",
+            "price": "444",
+            "description": "Stephen Kings legendary debutabout a teenage outcast and the revenge she enacts on her classmatesis a Classic. CARRIE is the novel which set him on the road to the Number One bestselling author King is today. Carrie White is no ordinary girl. Carrie White has the gift of telekinesis. To be invited to Prom Night by Tommy Ross is a dream come true for Carrie - the first step towards social acceptance by her high school colleagues. But events will take a decidedly macabre turn on that horrifying and endless night as she is forced to exercise her terrible gift on the town that mocks and loathes her . ."
+        },
+        "createBookWithNoQuantity": {
+            "author": "Stephen King", 
+            "title": "Carrie",
+            "image": "http://books.google.com/books/content?id=KOPSjMuVN4kC&printsec=frontcover&img=1&zoom=5",
+            "quantity": "",
+            "price": "444",
+            "description": "Stephen Kings legendary debutabout a teenage outcast and the revenge she enacts on her classmatesis a Classic. CARRIE is the novel which set him on the road to the Number One bestselling author King is today. Carrie White is no ordinary girl. Carrie White has the gift of telekinesis. To be invited to Prom Night by Tommy Ross is a dream come true for Carrie - the first step towards social acceptance by her high school colleagues. But events will take a decidedly macabre turn on that horrifying and endless night as she is forced to exercise her terrible gift on the town that mocks and loathes her . ."
+        },
+        "createBookWithNoPrice": {
+            "author": "Stephen King", 
+            "title": "Carrie",
+            "image": "http://books.google.com/books/content?id=KOPSjMuVN4kC&printsec=frontcover&img=1&zoom=5",
+            "quantity": "14",
+            "price": "",
+            "description": "Stephen Kings legendary debutabout a teenage outcast and the revenge she enacts on her classmatesis a Classic. CARRIE is the novel which set him on the road to the Number One bestselling author King is today. Carrie White is no ordinary girl. Carrie White has the gift of telekinesis. To be invited to Prom Night by Tommy Ross is a dream come true for Carrie - the first step towards social acceptance by her high school colleagues. But events will take a decidedly macabre turn on that horrifying and endless night as she is forced to exercise her terrible gift on the town that mocks and loathes her . ."
+        },
+        "updateBook": {
+            "author": "Stephen King", 
+            "title": "Doctor Sleep",
+            "image": "http://books.google.com/books/content?id=DQTgAAAAQBAJ&printsec=frontcover&img=1&zoom=5",
+            "quantity": "14",
+            "price": "245",
+            "description": "After decades as an itinerant alcoholicmiddle-aged Dan Torrance uses his remnant powers to assist the dying before coming to the aid of a twelve-year-old girl being tortured by a tribe of murderous paranormals"
+        },
+        "userLogin":
+        {
+            "email": "pranilkakade2@gmail.com",
+            "password": "1111"
+        },
+        "ProperAdminToken": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYW5pbGtha2FkZTJAZ21haWwuY29tIiwiaWQiOiI2MGJmNDc2Y2ZiZGUzODAzMjhiNmFkYzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjM2NDE4NDksImV4cCI6MTYyNTcxNTQ0OX0.Rsgdyl3RONpH3D0FAwtRPieuq5QRxZAdcGM8BmHTYrw"
+        },
+        "userToken": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYW5pbGtha2FkZTExMUBnbWFpbC5jb20iLCJpZCI6IjYwYmY0N2FjZmJkZTM4MDMyOGI2YWRjNSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjIzNjQzMDE0LCJleHAiOjE2MjU3MTY2MTR9.REe1ntSnafb-8VtMPUwgVG2X4ewIRbFiCblxR5kblcU"
+        }
+    }
+}
