@@ -61,8 +61,8 @@ class UserController {
 
    /**
    * @description Login With User/Admin Credential
-   * @param {*} request in json formate
-   * @param {*} response sends response from server
+   * @param {*} req in json formate
+   * @param {*} res sends response from server
    */
   login = (req, res) => {
     const loginData = {
