@@ -90,7 +90,7 @@ class UserModel {
   };
 
       /**
-      * @description find Email Id In the database and callback with user data or error 
+      * @description Find Email Id In the database and callback with user data or error 
       * @param {*} data hold email id
       * @param {*} callback holds a function 
       */
