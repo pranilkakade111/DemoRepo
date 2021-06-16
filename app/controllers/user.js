@@ -68,7 +68,7 @@ class UserController {
     const loginData = {
       email: req.body.email,
       password: req.body.password,
-      userType: req.role,
+      role: req.role,
     };
     userService.login(loginData, (err, loginResult) => {
       err 

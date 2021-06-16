@@ -58,14 +58,8 @@
         },
         "userLogin":
         {
-            "email": "pranilkakade2@gmail.com",
+            "email": "pranavchavan@gmail.com",
             "password": "1111"
-        },
-        "ProperAdminToken": {
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYW5pbGtha2FkZTJAZ21haWwuY29tIiwiaWQiOiI2MGJmNDc2Y2ZiZGUzODAzMjhiNmFkYzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjM2NDE4NDksImV4cCI6MTYyNTcxNTQ0OX0.Rsgdyl3RONpH3D0FAwtRPieuq5QRxZAdcGM8BmHTYrw"
-        },
-        "userToken": {
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYW5pbGtha2FkZTExMUBnbWFpbC5jb20iLCJpZCI6IjYwYmY0N2FjZmJkZTM4MDMyOGI2YWRjNSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjIzNjQzMDE0LCJleHAiOjE2MjU3MTY2MTR9.REe1ntSnafb-8VtMPUwgVG2X4ewIRbFiCblxR5kblcU"
         }
     }
 }

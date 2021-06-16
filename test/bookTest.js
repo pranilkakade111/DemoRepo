@@ -1,4 +1,3 @@
-const { expect } = require('chai');
 const chai = require('chai');
 const request = require('supertest');
 const chaiHttp = require('chai-http');
@@ -8,114 +7,143 @@ const bookData = require('./bookSample.json');
 chai.should();
 chai.use(chaiHttp);
 
-const adminToken = bookData.books.ProperAdminToken;
-const usertoken = bookData.books.userToken;
-
-// const userCredential = {
-//   email: 'pranilkakade2@gmail.com',
-//   password: '1111',
-// };
+const adminToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYW5hdmNoYXZhbkBnbWFpbC5jb20iLCJpZCI6IjYwYzhlYzNkNTBkYWZiMmRmMGQzOTg1OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYyMzg1MjUyNywiZXhwIjoxNjI1OTI2MTI3fQ.wdgTuqrjWvGmEIA-0UePhIrkzNoJr0Fb9EToH9RPHEQ';
+const usertoken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYW5pbGtha2FkZTExMUBnbWFpbC5jb20iLCJpZCI6IjYwYmY0N2FjZmJkZTM4MDMyOGI2YWRjNSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjIzODUyNTY1LCJleHAiOjE2MjU5MjYxNjV9.GznNtVa41JOLW_LN6FdiemXB3jW-VySLed-o4D4oCF4';
 
 const authenticatedUser = request.agent(server);
 
 describe('POST /books', () => {
-  before((done) => {
-    authenticatedUser
-      .post('/login')
-      .send(bookData.books.userLogin)
-      .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        return res.should.have.status(200);
-      });
-    done();
-  });
   it('givenBookDetails_When_Proper_Should_Be_Able_To_Create_Book', (done) => {
-    authenticatedUser
+    chai
+      .request(server)
       .post('/books')
+      .set('token', `${adminToken}`)
       .send(bookData.books.createBook)
       .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        return res.should.have.status(200);
+        res.should.have.status(200);
+        done();
       });
-    done();
+  });
+
+  it('givenBookDetails_When_Proper_ShouldNot_Be_Able_To_Create_Book', (done) => {
+    chai
+      .request(server)
+      .post('/books')
+      .set('token', `${adminToken}`)
+      .send(bookData.books.createBookWithNoAuthor)
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+
+  it('givenBookDetails_When_Proper_Should_Be_Not_Able_To_Create_Book', (done) => {
+    chai
+      .request(server)
+      .post('/books')
+      .set('token', `${adminToken}`)
+      .send(bookData.books.createBookWithNoImage)
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+
+  it('givenBookDetails_When_Proper_Should_Be_Not_Able_To_Create_Book', (done) => {
+    chai
+      .request(server)
+      .post('/books')
+      .set('token', `${adminToken}`)
+      .send(bookData.books.createBookWithNoPrice)
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+
+  it('givenBookDetails_When_Proper_ShouldNot_Be_Able_To_Create_Book', (done) => {
+    chai
+      .request(server)
+      .post('/books')
+      .set('token', `${adminToken}`)
+      .send(bookData.books.createBookWithNoQuantity)
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+
+  it('givenBookDetails_When_Proper_ShouldNot_Be_Able_To_Create_Book', (done) => {
+    chai
+      .request(server)
+      .post('/books')
+      .set('token', `${adminToken}`)
+      .send(bookData.books.createBookWithNoTitle)
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
   });
 
   it('givenBookDetails_When_Give_UserToken_Should_Not_Be_Able_To_Create_Book', (done) => {
     chai
       .request(server)
       .post('/books')
-      .set('token', +usertoken)
+      .set('token', `${usertoken}`)
       .send(bookData.books.createBook)
       .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        return res.should.have.status(401);
+        res.should.have.status(501);
+        done();
       });
-    done();
   });
 });
 
 describe('/GET, /books', () => {
-  before((done) => {
-    authenticatedUser
-      .post('/login')
-      .send(bookData.books.userLogin)
-      .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        return res.should.have.status(200);
-      });
-    done();
-  });
-  it.only('Given_Books_When_ProperEndPoint_Should_Return', (done) => {
-    authenticatedUser
+  it('Given_Books_When_ProperEndPoint_Should_Return', (done) => {
+    chai
+      .request(server)
       .get('/books')
+      .set('token', `${adminToken}`)
       .send()
       .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        return res.should.have.status(200);
+        res.should.have.status(200);
+        done();
       });
-    done();
   });
 
-  it.only('Given_Books_When_ImProperEndPoint_Should_Return', (done) => {
-    authenticatedUser
-      .get('/booksData')
+  it('Given_Books_When_ImProperEndPoint_Should_Return', (done) => {
+    chai
+      .request(server)
+      .get('/book')
+      .set('token', `${adminToken}`)
       .send()
       .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        return res.should.have.status(404);
+        res.should.have.status(404);
+        done();
       });
-    done();
   });
 });
 
 describe('DELETE, /books/:bookId', () => {
-  beforeEach((done) => {
-    authenticatedUser
-      .post('/login')
-      .send(bookData.books.userLogin)
+  it('givenBook_When_ProperBookId_Should Delete', (done) => {
+    chai
+      .request(server)
+      .delete('/books/60ca0a0fe5a220286cf6e3a4')
+      .set('token', `${adminToken}`)
       .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        return res.should.have.status(200);
+        res.should.have.status(200);
+        done();
       });
-    done();
   });
-  it('givenBook_When_ProperBookId_Should Delete', () => {
-    authenticatedUser
-    .delete('/books/60c439ec708e64331073fe7b')
-    .
+
+  it('givenBook_When_ImProperBookId_Should_Not_Delete', (done) => {
+    chai
+      .request(server)
+      .delete('/books/60ca0a0fe5a220286cf6e3a')
+      .set('token', `${adminToken}`)
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
   });
 });

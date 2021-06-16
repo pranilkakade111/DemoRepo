@@ -1,0 +1,6 @@
+{"code":"EDNS","syscall":"queryA","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-06-16T12:14:21.071Z"}
+{"errno":-4039,"code":"ESOCKET","syscall":"connect","address":"74.125.68.108","port":465,"command":"CONN","level":"error","timestamp":"2021-06-16T12:19:31.418Z"}
+{"code":"EDNS","syscall":"queryA","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-06-16T12:23:09.761Z"}
+{"code":"EDNS","syscall":"queryA","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-06-16T12:28:07.941Z"}
+{"code":"EDNS","syscall":"queryA","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-06-16T12:29:33.876Z"}
+{"code":"EDNS","syscall":"queryA","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-06-16T12:33:00.541Z"}

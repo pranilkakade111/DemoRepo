@@ -1,30 +1,60 @@
 {
-    "userRegistration":
+    "AdminRegistration":
         {
-            "firstName" : "Pranil",
-            "lastName"  : "Kakade",
-            "email"     : "pranilkakade111@gmail.com",
+            "firstName" : "Pranav",
+            "lastName"  : "Chavan",
+            "email"     : "pranavchavan@gmail.com",
             "password"  : "1111"
         },
 
-        "userRegistration_With_Improper_Details":
+    "userRegistration":
+        {
+            "firstName" : "Sachin",
+            "lastName"  : "Kakade",
+            "email"     : "sachinkakade@gmail.com",
+            "password"  : "1111"
+        },
+
+        "adminRegistration_With_Improper_Details":
         {
             "firstName": "sushant",
             "lastName": "kakade",
             "email": "pranilkakade111gmail.com",
-            "password": ""
+            "password": "",
+            "role": "admin"
+        },
+
+        "userRegistration_With_Improper_Details":
+        {
+            "firstName": "sachin",
+            "lastName": "kakade",
+            "email": "pranilkakade2gmail.com",
+            "password": "",
+            "role": "user"
+        },
+
+        "adminLogin":
+        {
+            "email": "pranavchavan@gmail.com",
+            "password": "1111"
         },
 
         "userLogin":
         {
             "email": "pranilkakade111@gmail.com",
-            "password": "1111"
+            "password": "0000"
+        },
+
+        "adminLogin_with_Improper_Details":
+        {
+            "email": "pranavchavan@gmail.com",
+            "password": "1234"
         },
 
         "userLogin_with_Improper_Details":
         {
-            "email": "dhananjaykakade814@gmail.com",
-            "password": "1234@"
+            "email": "pranilkakade111@gmail.com",
+            "password": "123"
         },
 
         "forgotPassword":
@@ -34,18 +64,16 @@
 
         "forgotPassword_with_Improper_Details":
         {
-            "email": "dhananjaykakade@gmail.com"
+            "email": "pranavchavan1@gmail.com"
         },
 
         "resetPassword_with_proper_token":
         {
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYW5pbGtha2FkZTExMUBnbWFpbC5jb20iLCJpZCI6IjYwYmY0N2FjZmJkZTM4MDMyOGI2YWRjNSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjIzMzQ3OTA1LCJleHAiOjE2MjU0MjE1MDV9.kkX52mvS0LBIMGJqL9W9yxZ3DVEfqJCUm-Olhxcyutw",
-            "password": "0000"
+            "newPassword": "0000"
         },
 
         "resetPassword_with_Improper_token":
         {
-            "token": "JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiZGhhbmFuamF5a2FrYWRlODE0QGdtYWlsLmNvbSJ9LCJpYXQiOjE2MjA0MDA4MjMsImV4cCI6MTYyMDQ4NzIyM30.w01svqAFE7cQBw9d2TlvgCrOhC2KpYvuArb7pZoKVdk",
-            "password": "123"
+            "newPassword": "123"
         }
 }
