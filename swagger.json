@@ -25,9 +25,9 @@
         "/user":{
             "post": {
                 "tags": [
-                    "User"
+                    "Book Store App: Register User"
                 ],
-                "summary": "Register As a End User",
+                "summary": "Register As User",
                 "consumes":[
                     "application/json"
                 ],
@@ -75,7 +75,7 @@
         "/admin":{
             "post": {
                 "tags": [
-                    "User"
+                    "Book Store App: Register Admin"
                 ],
                 "summary": "Register As Admin..!",
                 "consumes":[
@@ -124,7 +124,7 @@
         "/userLogin":{
             "post": {
                 "tags": [
-                    "User"
+                    "Book Store App: User Login"
                 ],
                 "summary": "Login Registered User",
                 "consumes":[
@@ -169,7 +169,7 @@
         "/adminLogin":{
             "post": {
                 "tags": [
-                    "User"
+                    "Book Store App: Admin Login"
                 ],
                 "summary": "Login User Registered As a Admin",
                 "consumes":[
@@ -182,7 +182,7 @@
                     {
                         "in": "body",
                         "name": "User",
-                        "description": "Admin Object That Teed To Be Login",
+                        "description": "Admin Object That Need To Be Login",
                         "required": true,
                         "schema": {
                             "type": "object",
@@ -212,10 +212,10 @@
         },"/forgotPassword": {
             "post": {
                 "tags": [
-                    "Forgot Password"
+                    "Book Store App: Forgot Password"
                 ],
                 "description": "create a forgot password endpoint",
-                "summary": "forgot password",
+                "summary": "Forgot Password",
                 "consumes": [
                     "application/json"
                 ],
@@ -250,7 +250,7 @@
         "/resetPassword": {
             "post": {
                 "tags": [
-                    "Reset Password"
+                    "Book Store App: Reset Password"
                 ],
                 "description": "create a reset Password endpoint",
                 "summary": "Reset Password",
@@ -277,7 +277,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Password reset Successfully"
+                        "description": "Password Reset Successfully"
                     },
                     "400": {
                         "description": "Password Is Not Reset"
