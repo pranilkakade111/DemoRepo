@@ -32,7 +32,7 @@ class UserService {
       if(err) {
         err = {
           success: false,
-          message: 'something went wrong..!',
+          message: 'Something Went Wrong..!',
           err,
         } 
         callback(err, null);
