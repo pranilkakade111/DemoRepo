@@ -14,6 +14,7 @@ const Cart = mongoose.model('Cart', cartSchema);
 
 class CartModel {
   checkBook = (bookID, callback) => {
+    
      Cart.find({ bookId: bookID.bookId }, (err, bookResult) => {
        if (err){
          callback(err, null);
