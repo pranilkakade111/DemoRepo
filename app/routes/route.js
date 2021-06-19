@@ -10,6 +10,7 @@
  ************************************************************************* */
 const user = require('../controllers/user');
 const book = require('../controllers/book');
+const cart = require('../controllers/cart');
 const helper = require('../../utility/helper');
 
 module.exports = (app) => {
@@ -32,4 +33,10 @@ module.exports = (app) => {
   app.put('/books/:bookId', helper.verifyRole, book.updateBook);
 
   app.delete('/books/:bookId', helper.verifyRole, book.deleteBook);
+
+  app.put('/addToCart', helper.verifyToken, cart.addToCart);
+
+  app.put('/removeFromCart', helper.verifyToken, cart.removeFromCart);
+
+  app.put('/purchaseBook/:userId', helper.verifyToken, cart.purchaseBook);
 };
