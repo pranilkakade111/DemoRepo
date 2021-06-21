@@ -7,21 +7,21 @@ class CartController {
             bookId: req.body.bookId,
             userId: req.userId,
           };
-          cartService.addToCart(cartData, (err, cartResult) => {  
-            if(cartResult == null || cartResult == undefined || cartResult == ''){
+          cartService.addToCart(cartData, (err, addCart) => {
+            if(addCart == null || addCart == undefined || addCart == '' || err){
               return res.status(401).send({
                   success: false,
                   message: 'Failed To Add Book In A Cart..!!!',
-                  err, 
+                  err,
                  });
             } else {
               return res.status(200).send({
-                  success: true,
-                  message: 'Book Added In A Cart Successfully...!!! ',
-                  data: cartResult, 
-                 });
+                success: true,
+                message: 'Book Added In A Cart Successfully...!!! ',
+                data: addCart, 
+               });
             }
-          });  
+          }); 
   };
 
   removeFromCart = (req, res) => {
@@ -47,19 +47,19 @@ class CartController {
   };
 
   purchaseBook = (req, res) => {
-    const userID = req.params.userId;
+    const cart = req.params.cartId;
 
-    cartService.purchaseBook(userID, (err, bookResult) => {
+    cartService.purchaseBook(cart, (err, bookResult) => {
       if(bookResult === null || err){
         return res.status(404).send({
             success: false,
-            message: 'User Not Found With An Id..!!' + userID,
+            message: 'Cart Not Found With An Id..!!' + cart,
         });
     }else {
         return res.status(200).send({
             success: true,
             message: 'Book Is Purchased By User Successfully....!!!!'
-          });
+        });
     }
     });
   };
