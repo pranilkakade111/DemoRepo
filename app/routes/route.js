@@ -38,5 +38,5 @@ module.exports = (app) => {
 
   app.put('/removeFromCart', helper.verifyToken, cart.removeFromCart);
 
-  app.put('/purchaseBook/:userId', helper.verifyToken, cart.purchaseBook);
+  app.put('/purchaseBook/:cartId', helper.verifyToken, cart.purchaseBook);
 };
