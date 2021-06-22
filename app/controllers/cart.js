@@ -47,21 +47,22 @@ class CartController {
   };
 
   purchaseBook = (req, res) => {
-    const cart = req.params.cartId;
-
-    cartService.purchaseBook(cart, (err, bookResult) => {
-      if(bookResult === null || err){
-        return res.status(404).send({
-            success: false,
-            message: 'Cart Not Found With An Id..!!' + cart,
-        });
-    }else {
-        return res.status(200).send({
-            success: true,
-            message: 'Book Is Purchased By User Successfully....!!!!'
-        });
+    const cart = {
+     cartId: req.body.cartId,
+     userId: req.userId,
     }
+    cartService.purchaseBook(cart).then(() => {
+      res.status(200).send({
+        success: true,
+        message: 'order purchase successfully',
+      });
+    }).catch((err) => {
+      res.status(400).send({
+        success: false,
+        message: 'unable to purchase order',
+        err,
     });
+    })
   };
 };
 
