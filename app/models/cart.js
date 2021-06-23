@@ -1,3 +1,13 @@
+/** ***********************************************************************
+ * Execution        : 1. default node       cmd> nodemon server.js
+ *
+ * Purpose          : to hit the perticular API
+
+ * @file            : cart.js
+ * @author          : Pranil Kakade
+ * @version         : 1.0
+ * @since           : 17-06-2021
+ ************************************************************************* */
 const mongoose = require('mongoose');
 const cart = require('../services/cart');
 
@@ -14,16 +24,11 @@ const Cart = mongoose.model('Cart', cartSchema);
 
 class CartModel {
 
-  checkBook = (bookID, callback) => {
-     Cart.findOne({ bookId: bookID.bookId }, (err, bookResult) => {
-       if (err) {
-         callback(err, null);
-       } else {
-         callback(null, bookResult);
-       }
-     });
-    };
-
+  /**
+   * @description   : It adds book into the cart
+   * @param {*} cartData
+   * @returns       : Callback
+  */
   addToCart = async (cartData, callback) => {
     const userId = cartData.userId;
     const bookId = cartData.bookId;
@@ -41,6 +46,11 @@ class CartModel {
       }
   };
 
+  /**
+   * @description   : It removes book from cart
+   * @param {*} cartDetail
+   * @returns       : callback
+  */
   removeFromCart = async (cartDetail, callback) => {
     const bookId = cartDetail.bookId;
     const userId = cartDetail.userId;
@@ -49,24 +59,35 @@ class CartModel {
     callback(null, removeBook);
   };
 
-  validPlaceOrder = (cart, callback) => {
-    Cart.find({ cartId: cart.cartId }, (err, validCheck) => {
-      console.log(cart.userId);
-      if(cart.userId) {
-        callback(null, validCheck);
-      } else {
-        callback(err, null);
-      }
-    });
-  };
-
+  /**
+    * @description   : It changes the isPurchased to true in cart
+    * @param {*} cart
+    * @returns       : Promise
+   */
   purchaseBook = (cart) => {
     return new Promise((resolve, reject) => {
-      Cart.findByIdAndUpdate(cart.cartId, {isPurchased: true}, {new: true})
+      Cart.findOneAndUpdate({ userId: { $eq: cart.userId }, _id: { $eq: cart.cartId } }, {isPurchased: true}, {new: true})
       .then((data) => resolve({ data }))
       .catch((err) => reject({ err }));
-    });
-  
+    }); 
+ };
+
+ /**
+ * @description     : getting all carts from the book store app
+ * @returns         : Promise
+ */
+ getAllCart = async () => {
+   const cartData = Cart.find();
+   return cartData;
+ };
+
+ /**
+ * @description     : getting a perticukar cart from the book store app
+ * @returns         : Promise
+ */
+ getCartById = async (getCart) => {
+    const cartData = await Cart.findById(getCart);
+    return cartData;
  };
 };
 
