@@ -39,4 +39,8 @@ module.exports = (app) => {
   app.put('/removeFromCart', helper.verifyToken, cart.removeFromCart);
 
   app.put('/purchaseBook', helper.verifyToken, cart.purchaseBook);
+
+  app.get('/getAllCart', helper.verifyRole, cart.getAllCart);
+
+  app.get('/getCartById/:cartId', helper.verifyRole, cart.getCartById);
 };
