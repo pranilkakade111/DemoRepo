@@ -441,12 +441,200 @@
                         "description": "Failed To Delete Book"
                     },
                     "500": {
-                        "description": "could not Find Book"
+                        "description": "Could Not Find Book"
                     }
                 },
                 "security": [
                     {
                         "JWT": []
+                    }
+                ]
+            }
+        },
+        "/addToCart":{
+            "put": {
+                "tags": [
+                    "Book Store App: Add To Cart"
+                ],
+                "summary": "Add To Cart",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Carts",
+                        "description": "Add Books In Cart",
+                        "schema": {
+                            "type":"object",
+                            "properties": {
+                                "bookId":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Book Added In A Cart Successfully...!!!"
+                    },
+                    "404": {
+                        "description": "Failed To Add A Book In A Cart"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ]
+            }
+        },
+        "/removeFromCart":{
+            "put": {
+                "tags": [
+                    "Book Store App: Remove From The Cart"
+                ],
+                "summary": "Remove From The Cart",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Carts",
+                        "description": "Remove From The Cart",
+                        "schema": {
+                            "type":"object",
+                            "properties": {
+                                "bookId":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Remove Book From The Cart Successfully...!!!"
+                    },
+                    "404": {
+                        "description": "Failed To Remove Book From The Cart"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ]
+            }
+        },
+        "/purchaseBook":{
+            "put": {
+                "tags": [
+                    "Book Store App: Purchase Book From The Cart"
+                ],
+                "summary": "Purchase Book From The Cart",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Carts",
+                        "description": "Purchase Book From The Cart",
+                        "schema": {
+                            "type":"object",
+                            "properties": {
+                                "cartId":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Purchase Book From The Cart Successfully...!!!"
+                    },
+                    "404": {
+                        "description": "Failed To Purchase Book From The Cart"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ]
+            }
+        },
+        "/getAllCart":{
+            "get": {
+                "tags": [
+                    "Book Store App: Retrive All Cart"
+                ],
+                "summary": "Retrive All Carts",
+                "description": "Retrive All Carts",
+                "responses": {
+                    "200":{
+                        "description": "Retrived All Carts Successfully...!"
+                    },
+                    "401":{
+                        "description": "Failed To Retrive All Carts...!!!"
+                    }
+                },
+                "security": [
+                    {
+                        "JWT":[]
+                    }
+                ]
+            }
+        },
+        "/getCartById/{id}":{
+            "get": {
+                "tags": [
+                    "Book Store App: Retrive A Perticular Cart"
+                ],
+                "summary": "Retrive A Perticular Carts",
+                "description": "Retrive A Perticular Carts",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Find Cart By Id..!!",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description": "Retrived A Perticular Cart Successfully...!"
+                    },
+                    "401":{
+                        "description": "Failed To Retrive A Perticular Cart...!!!"
+                    }
+                },
+                "security": [
+                    {
+                        "JWT":[]
                     }
                 ]
             }
