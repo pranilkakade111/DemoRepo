@@ -1,0 +1,23 @@
+{
+    "addToCartWithProperDetails": {
+        "bookId": "60ccde95e11d8f26349b8842"
+    },
+    "addToCartWithImProperDetails": {
+        "bookId": "60cc757826afe60f702778"
+    },
+    "removefromCartWithProperDetails": {
+        "bookId": "60ccde95e11d8f26349b8842"
+    },
+    "removefromCartWithImProperDetails": {
+        "bookId": "60cc757826afe60f702778"
+    },
+    "isPurchaseStatus": {
+        "cartId": "60ce1e444ddda826f07524cb",
+        "isPurchased": "true"
+    },
+    "isPurchaseWrongData": {
+        "cartId": "60ce1e444dd",
+        "isPurchased": "true"
+    }
+        
+}
