@@ -70,12 +70,9 @@ class CartService {
   */
   getCartById = (getCart) => {
     return new Promise((resolve, reject) =>{
-      cartModel.getCartById(getCart)
-      .then((cart) => {
-        resolve(cart);
-      }).catch((err) => {
-        reject(err);
-      });
+      const result = cartModel.getCartById(getCart)
+      result.then((book) => resolve({ book }))
+            .catch((err) => reject({ err }));
     });
   };
 };

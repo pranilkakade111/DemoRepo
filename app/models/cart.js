@@ -8,6 +8,8 @@
  * @version         : 1.0
  * @since           : 17-06-2021
  ************************************************************************* */
+const { reject } = require('async');
+const { resolve } = require('bluebird');
 const mongoose = require('mongoose');
 const cart = require('../services/cart');
 
@@ -85,9 +87,12 @@ class CartModel {
  * @description     : getting a perticukar cart from the book store app
  * @returns         : Promise
  */
- getCartById = async (getCart) => {
-    const cartData = await Cart.findById(getCart);
-    return cartData;
+ getCartById = (getCart) => {
+   return new Promise((resolve, reject) => {
+    Cart.findOne({ userId: getCart.userId})
+    .then((data) => resolve(data))
+    .catch((err) => reject(err));
+   });
  };
 };
 

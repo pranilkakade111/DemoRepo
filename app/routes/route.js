@@ -40,7 +40,7 @@ module.exports = (app) => {
 
   app.put('/purchaseBook', helper.verifyToken, cart.purchaseBook);
 
-  app.get('/getAllCart', helper.verifyRole, cart.getAllCart);
+  app.get('/getAllCart', helper.verifyToken, cart.getAllCart);
 
-  app.get('/getCartById/:cartId', helper.verifyRole, cart.getCartById);
+  app.get('/getCartById/:userId', helper.verifyToken, cart.getCartById);
 };

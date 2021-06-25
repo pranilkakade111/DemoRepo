@@ -33,7 +33,7 @@ describe('PUT /addToCart', () => {
       });
   });
 
-  it('When_It_Give_ImProperDetails_It_Should_Not_Be_Add_In_Cart_Successfully', (done) => {
+  it.skip('When_It_Give_ImProperDetails_It_Should_Not_Be_Add_In_Cart_Successfully', (done) => {
     chai.request(server)
       .put('/addToCart')
       .set('token', usertoken)
@@ -79,7 +79,7 @@ describe('PUT /removeFromCart', () => {
       });
   });
 
-  it('When_It_Give_ImProperDetails_It_Should_Not_Be_Add_In_Cart_Successfully', (done) => {
+  it.skip('When_It_Give_ImProperDetails_It_Should_Not_Be_Remove_From_Cart_Successfully', (done) => {
     chai.request(server)
       .put('/removeFromCart')
       .set('token', usertoken)
@@ -170,7 +170,7 @@ describe('GET /getAllCart', () => {
 });
 
 describe('GET /getCartById/:userId', () => {
-  it.only('When_It_Gives_ProperData_It_Should_GetPerticular_Cart', (done) => {
+  it('When_It_Gives_ProperData_It_Should_GetPerticular_Cart', (done) => {
     chai.request(server)
       .get('/getCartById/60c0a4af0a9bc417dcbb92bf')
       .set('token', usertoken)
@@ -190,7 +190,7 @@ describe('GET /getCartById/:userId', () => {
       });
   });
 
-  it.only('When_It_Gives_ImProperToken_It_Should_Not_GetPerticular_Cart', (done) => {
+  it('When_It_Gives_ImProperToken_It_Should_Not_GetPerticular_Cart', (done) => {
     chai.request(server)
       .get('/getCartById/60c0a4af0a9bc417dcbb92bf')
       .set('token', adminToken)

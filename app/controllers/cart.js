@@ -140,30 +140,21 @@ class CartController {
    * @method: getCartById from service.js
   */
   getCartById = async (req, res) => {
-    try {
-      const getCartId = req.params.cartId;
-
-    const cartDataId = await cartService.getCartById(getCartId);
-    if (cartDataId !== null) {
-      return res.status(200).send({
-        success: true,
-        message: 'Retrived A Perticular Cart Successfully....!!!' + getCartId,
-        data: cartDataId,
-    });
-    } else {
-      return res.status(401).send({
-        success: false,
-        message: 'Failed To Retrive A Cart.....!!',
-    });
-  }
-    } catch (error) {
-      return res.status(500).send({
-        success: false,
-        message: 'Internal Server Error...!',
-        error,
-      }); 
-    }
-    
+      const getUserId = {
+        userId: req.params.userId,
+      }
+      cartService.getCartById(getUserId).then((cart) =>{
+        res.status(200).send({
+          success: true,
+          message: 'Retrived A Perticular Cart Successfully....!!!' + getUserId,
+          cart,
+        });
+      }).catch((err) => {
+        res.status(401).send({
+          success: false,
+          message: 'Failed To Retrive A Cart.....!!',
+        });    
+      });
   };
 };
 
