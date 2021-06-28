@@ -9,6 +9,7 @@
  * @since           : 09-06-2021
  ************************************************************************* */
 const mongoose = require('mongoose');
+const { callbackPromise } = require('nodemailer/lib/shared');
 
 const BookSchema = new mongoose.Schema({
   author: { type: String, required: true },
@@ -76,6 +77,39 @@ class BookModel {
     return dataId; 
   };
 
+  searchByAuthor = async (searchField) => {
+    const field = searchField;
+    const result = await Book.aggregate([
+      {$match: {author: field}},
+      {
+          $group: { _id: '$author', Books: { $push: '$title' }, Count: { $sum: 1 } }
+      },
+      { $project: { Owner: '$_id', Books: '$Books', Count: '$Count', _id: 0 } }
+  ]);
+  return result;
+  };
+
+  searchByAuthor = async (searchField) => {
+    const field = searchField;
+    const result = await Book.aggregate([
+      {$match: {author: field}},
+      {
+          $group: { _id: '$author', Books: { $push: '$title' }, Count: { $sum: 1 } }
+      },
+      { $project: { Owner: '$_id', Books: '$Books', Count: '$Count', _id: 0 } }
+  ]);
+  return result;
+  };
+
+  searchAllAuthor = async () => {
+    const data = await Book.aggregate([
+      {
+          $group: { _id: '$author', Books: { $push: '$title' }, Count: { $sum: 1 } }
+      },
+      { $project: { Owner: '$_id', Books: '$Books', Count: '$Count', _id: 0 } }
+  ]);
+  return data;
+  };
 };
 
 module.exports = new BookModel();
