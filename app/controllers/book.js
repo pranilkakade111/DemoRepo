@@ -166,6 +166,41 @@ class BookController {
             });  
         }   
     };
+
+    searchByAuthor = async (req, res) => {
+        try{
+        let searchField = req.params.author;
+      let searchAuthor = await bookService.searchByAuthor(searchField);
+            return res.status(200).send({
+              success: true,
+              message: 'Book Searched By Author Name SuccessFully..!',
+              data: searchAuthor,
+            });  
+        } catch(error) {
+            return res.status(400).send({
+                success: false,
+                message: 'Failed To Search book By Author Name Or Please Enter The Proper Author Name..!',
+                error,
+            });
+        }
+    };
+
+    searchAllAuthor = async (req, res) => {
+        try{
+      let author = await bookService.searchAllAuthor();
+            return res.status(200).send({
+              success: true,
+              message: 'All Books Searched By Author Name SuccessFully..!',
+              data: author,
+            });  
+        } catch(error) {
+            return res.status(400).send({
+                success: false,
+                message: 'Failed To Search All Book By Author Name Or Please Enter The Proper Author Name..!',
+                error,
+            });
+        }
+    };
 };
 
 module.exports = new BookController();
