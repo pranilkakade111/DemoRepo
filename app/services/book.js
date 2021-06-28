@@ -72,6 +72,17 @@ class BookServices {
     });
   };
 
+  searchByAuthor = async (searchField) => {
+    let searchdata = [];
+    searchdata = await bookModel.searchByAuthor(searchField);
+    return searchdata;
+  };
+
+  searchAllAuthor = async () => {
+    let dataSearch = [];
+    dataSearch = await bookModel.searchAllAuthor();
+    return dataSearch;
+  };
 };
 
 module.exports = new BookServices();
