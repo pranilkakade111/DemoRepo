@@ -43,4 +43,8 @@ module.exports = (app) => {
   app.get('/getAllCart', helper.verifyToken, cart.getAllCart);
 
   app.get('/getCartById/:userId', helper.verifyToken, cart.getCartById);
+
+  app.get('/books/:author', helper.verifyToken, book.searchByAuthor);
+
+  app.get('/authorSearch', helper.verifyToken, book.searchAllAuthor);
 };
