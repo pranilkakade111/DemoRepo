@@ -167,6 +167,11 @@ class BookController {
         }   
     };
 
+    /**
+   * @description Get A Book By Authors Name From Database
+   * @param {*} req in json formate
+   * @param {*} res sends response from server
+   */
     searchByAuthor = async (req, res) => {
         try{
         let searchField = req.params.author;
@@ -185,6 +190,11 @@ class BookController {
         }
     };
 
+    /**
+   * @description Get All Book By Authors Name From Database
+   * @param {*} req in json formate
+   * @param {*} res sends response from server
+   */
     searchAllAuthor = async (req, res) => {
         try{
       let author = await bookService.searchAllAuthor();
@@ -201,6 +211,27 @@ class BookController {
             });
         }
     };
+
+    pricefilter = async (req, res) => {
+        try {
+            let booksCostRange = [];
+            booksCostRange = req.body.costRange;
+
+            let filteredResult = await bookService.pricefilter(booksCostRange);
+            return res.status(200).send({
+                success: true,
+                message: 'Book Found successfully..!',
+                data: filteredResult,
+            });
+        } catch (error) {
+            return res.status(500).send({
+                status: false,
+                message: 'Failed To Find Book Range By Price..!',
+                error,
+            });
+        }
+    };
+
 };
 
 module.exports = new BookController();

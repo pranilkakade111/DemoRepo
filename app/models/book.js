@@ -110,6 +110,17 @@ class BookModel {
   ]);
   return data;
   };
+
+  pricefilter = async (booksCostRange) => {
+    try {
+      let minPrice = booksCostRange.min;
+      let maxPrice = booksCostRange.max;
+      const result = await Book.find({ price: { $lte: maxPrice, $gte: minPrice } }).countDocuments();
+      return result;
+  } catch (error) {
+      return error;
+  }
+  };
 };
 
 module.exports = new BookModel();

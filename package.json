@@ -7,8 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "nyc mocha ./test/cartTest.js --timeout 2000",
-    "coverage": "nyc --reporter=lcov --reporter=text npm test",
+    "test": "nyc mocha ./test/bookTest.js",
+    "coverage": "nyc --reporter=text npm test",
     "start": "nodemon server.js",
     "lint": "eslint ./"
   },

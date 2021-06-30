@@ -638,6 +638,91 @@
                     }
                 ]
             }
+        },
+        "/authorSearch":{
+            "get": {
+                "tags": [
+                    "Book Store App: Retrive All Books By Author Name"
+                ],
+                "summary": "Get Books Author With Their Written Books And Their Count",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrive All Books By Author Name Successfully"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ]
+            }
+        },
+        "/books/priceRange":{
+            "post": {
+                "tags": [
+                    "Book Store App: Price Range Filter"
+                ],
+                "summary": "Number Of Books In Given Cost Ranges",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Book",
+                        "description": "Book Object",
+                        "required": true,
+                        "schema": {
+                            "type":"object",
+                            "properties": {
+                                "author": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "quantity": {
+                                    "type": "number"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "description": {
+                                    "type": "string"
+                                }
+                            } 
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Books Found Successfully...!"
+                    },
+                    "404": {
+                        "description": "There Is No Book Available In Given Range"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ]
+            }
         }
     },
     "securityDefinitions": {

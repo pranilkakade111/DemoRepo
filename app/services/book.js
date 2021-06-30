@@ -72,16 +72,38 @@ class BookServices {
     });
   };
 
+  /**
+   * @description Get A Book From The database using model methods
+   * @param {*}  searchField holds Author Name 
+   */
   searchByAuthor = async (searchField) => {
     let searchdata = [];
     searchdata = await bookModel.searchByAuthor(searchField);
     return searchdata;
   };
 
+  /**
+   * @description Get All Book From The database using model methods 
+   */
   searchAllAuthor = async () => {
     let dataSearch = [];
     dataSearch = await bookModel.searchAllAuthor();
     return dataSearch;
+  };
+
+  pricefilter = async (booksCostRange) => {
+    try {
+      let result = [];
+      for (let i = 0; i < booksCostRange.length; i++) {
+          let booksInRange = { range: '', numberOfBooks: '' };
+          booksInRange.range = `${booksCostRange[i].min}-${booksCostRange[i].max}`;
+          booksInRange.numberOfBooks = await bookModel.pricefilter(booksCostRange[i]);
+          result[i] = booksInRange;
+      }
+      return result;
+    } catch (error) {
+      return error;
+    }
   };
 };
 
