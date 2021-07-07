@@ -1,4 +1,6 @@
 const express = require('express');
+
+const app = express();
 const swaggerUi = require('swagger-ui-express');
 const logger = require('./logger/logger');
 const swaggerDoc = require('./swagger.json');
@@ -7,7 +9,6 @@ const dbConnection = require('./config/dbConfig');
 require('dotenv').config();
 
 const port = process.env.PORT || 5000;
-const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

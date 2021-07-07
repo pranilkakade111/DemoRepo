@@ -190,7 +190,7 @@ class BookController {
         }
     };
 
-    /**
+   /**
    * @description Get All Book By Authors Name From Database
    * @param {*} req in json formate
    * @param {*} res sends response from server
@@ -212,6 +212,11 @@ class BookController {
         }
     };
 
+   /**
+   * @description Price Filter API
+   * @param {*} req in json formate
+   * @param {*} res sends response from server
+   */
     pricefilter = async (req, res) => {
         try {
             let booksCostRange = [];

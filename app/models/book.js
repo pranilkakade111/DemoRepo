@@ -77,6 +77,10 @@ class BookModel {
     return dataId; 
   };
 
+     /**
+   * @description Get a Perticular book from database By Athors name
+   * @param {*} searchField holds the authers name
+   */
   searchByAuthor = async (searchField) => {
     const field = searchField;
     const result = await Book.aggregate([
@@ -89,18 +93,9 @@ class BookModel {
   return result;
   };
 
-  searchByAuthor = async (searchField) => {
-    const field = searchField;
-    const result = await Book.aggregate([
-      {$match: {author: field}},
-      {
-          $group: { _id: '$author', Books: { $push: '$title' }, Count: { $sum: 1 } }
-      },
-      { $project: { Owner: '$_id', Books: '$Books', Count: '$Count', _id: 0 } }
-  ]);
-  return result;
-  };
-
+   /**
+   * @description Get all book from database By Athors name
+   */
   searchAllAuthor = async () => {
     const data = await Book.aggregate([
       {
@@ -111,6 +106,10 @@ class BookModel {
   return data;
   };
 
+   /**
+   * @description Show Price Filter from database
+   * @param {*} booksCostRange holds the min and max Price Range
+   */
   pricefilter = async (booksCostRange) => {
     try {
       let minPrice = booksCostRange.min;

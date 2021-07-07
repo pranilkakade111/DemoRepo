@@ -48,5 +48,5 @@ module.exports = (app) => {
 
   app.get('/authorSearch', helper.verifyToken, book.searchAllAuthor);
 
-  app.post('/books/priceRange', helper.verifyToken, book.pricefilter);
+  app.post('/books/priceRange', book.pricefilter);
 };

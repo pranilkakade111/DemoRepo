@@ -91,6 +91,10 @@ class BookServices {
     return dataSearch;
   };
 
+  /**
+   * @description Filter Price API From The database using model methods
+   * @param {*}  booksCostRange holds Cost Range 
+   */
   pricefilter = async (booksCostRange) => {
     try {
       let result = [];
