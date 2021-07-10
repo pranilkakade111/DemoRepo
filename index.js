@@ -1,15 +1,16 @@
 const express = require('express');
 const axios = require('axios');
 const socket = require('socket.io');
+require('dotenv').config();
 
 const app = express();
-const baseUrl = 'http://localhost:8000';
-
+const baseUrl = process.env.URL;
+const port = process.env.SOCKET_PORT;
 app.use(express.static(`${__dirname}/public/`));
 
 // listen for request
-const server = app.listen(4000, () => {
-  console.log('Connected, server started listening on port :', 4000);
+const server = app.listen(port, () => {
+  console.log('Connected, server started listening on port :', port);
 });
 
 const io = socket(server);
